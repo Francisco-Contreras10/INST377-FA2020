@@ -1,6 +1,6 @@
 /*CSS*/
 body {
-    background: #3895a8;
+    background: #3aeba1;
   }
   
   .wrapper {
@@ -25,7 +25,6 @@ body {
     border-radius: 4px;
   }
   
-  /* Enter YOUR lab styles after this line */
   .flex-outer li,
   .flex-inner {
     display: flex;
