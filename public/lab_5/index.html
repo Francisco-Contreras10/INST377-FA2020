@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Francisco Contreras Lab 4</title>
     <link rel="stylesheet" type="text/css" href="styles.css" />
 </head>
+
 <body>
     <div class="wrapper">
         <div class="container">
@@ -21,9 +23,10 @@
                     <li><label for="phone">Phone</label>
                         <input type="tel" name="phone" id="phone"></li>
                     <li><label for="message">Message</label>
-                        <textarea name="message" id="message" cols="33" rows="10">This is some default message text.</textarea></li>
+                        <textarea name="message" id="message" cols="33"
+                            rows="10">This is some default message text.</textarea></li>
                     <li>
-                        <p class = "checkbox-list-label"> Age </p>
+                        <p class="checkbox-list-label"> Age </p>
                         <ul class='flex-inner'>
                             <li><input type="checkbox" id="eighteen-thirtyfive" name="age">
                                 <label for="eighteen-thirtyfive">18-35</label></li>
@@ -32,11 +35,12 @@
                             <li><input type="checkbox" id="fifty-sixtyfive" name="age">
                                 <label for="fifty-sixtyfive">50-65</label></li>
                         </ul>
-           
+
                     </li>
                     <li>
-                        <button class="button" id="submit" name="submit" type="submit" >Submit form</button>
-                        <button onlick="testFunction()" class="button" id="activate_button" name="activate_button" type="button">Activate</button>
+                        <button class="button" id="submit" name="submit" type="submit">Submit form</button>
+                        <button onclick="testFunction()" class="button" id="activate_button" name="activate_button"
+                            type="button">Activate</button>
                     </li>
                 </ul>
             </form>
@@ -44,26 +48,27 @@
     </div>
     <script>
         function testFunction() {
-        fetch('/api')
-        .then((response) => response.text())
-        .then((response) => {
-            console.log(response);
-            document.querySelector('.h1').textContent = response; 
-            document.querySelector('.title').textContent = response; 
-            document.querySelector('body').style.backgroundColor = "#fa4";
-            document.querySelector('.flex-outer').style.margin = "0px auto";
-            const elements = document.querySelectorAll('.flex-inner li label')
-            const fruitArray = ['apple', 'kiwi', 'pomelo']
-            elements.forEach((el,i) => {
-                const text = el.innerText;
-                console.log(text);
-                el.innerText = fruitArray[i];
-            })
-          
-     })
-}
-const myfunc = () => {}
-    
-</script>
+            fetch('/api')
+                .then((response) => response.text())
+                .then((response) => {
+                    console.log(response);
+                    let text = response;
+
+                    document.body.style.backgroundColor = "#3a619e";
+                    document.querySelector('.flex-outer').style.margin = "0px auto";
+                    document.querySelector('.checkbox-list-label').innerHTML = "Fruits";
+
+                    const elements = document.querySelectorAll('.flex-inner li label')
+                    const fruitArray = ['apple', 'banana', 'grapes']
+                    elements.forEach((el, i) => {
+                        const text = el.innerText;
+                        console.log(text);
+                        el.innerText = fruitArray[i];
+                    })
+
+                })
+        }
+    </script>
 </body>
+
 </html>
