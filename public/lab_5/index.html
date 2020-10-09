@@ -35,13 +35,14 @@
            
                     </li>
                     <li>
-                        <button class="button" id="submit" name="submit" type="submit" onlick="button">Submit form</button>
+                        <button class="button" id="submit" name="submit" type="submit" onlick="testFunction()">Submit form</button>
                         <button class="button" id="activate" name="activate" type="submit">Activate</button>
                     </li>
                 </ul>
             </form>
         </div>
     </div>
+    <script>
     function testFunction() {
         fetch('/api')
         .then((response) => response.text())
@@ -49,5 +50,6 @@
              console.log(response);
         })
    }
+</script>
 </body>
 </html>
