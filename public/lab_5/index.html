@@ -4,7 +4,7 @@
     <title>Francisco Contreras Lab 4</title>
     <link rel="stylesheet" type="text/css" href="styles.css" />
 </head>
-<body>
+<body id='body'>
     <div class="wrapper">
         <div class="container">
             <div class="header">
@@ -36,20 +36,21 @@
                     </li>
                     <li>
                         <button class="button" id="submit" name="submit" type="submit" >Submit form</button>
-                        <button onlick="testFunction()" class="button" id="button" name="button" type="button">Activate</button>
+                        <button onlick="testFunction()" class="button" id="activate_button" name="activate_button" type="button">Activate</button>
                     </li>
                 </ul>
             </form>
         </div>
     </div>
     <script>
-    function testFunction() {
-        fetch('/api')
-        .then((response) => response.text())
-        .then((response) => {
-             console.log(response);
-        })
-   }
+        function testFunction() {
+     fetch('/api')
+     .then((response) => response.text())
+     .then((response) => {
+          console.log(response);
+     })
+}
+    
 </script>
 </body>
 </html>
