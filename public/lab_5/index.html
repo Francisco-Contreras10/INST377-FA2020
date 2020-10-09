@@ -35,8 +35,8 @@
            
                     </li>
                     <li>
-                        <button class="button" id="submit" name="submit" type="submit" onlick="testFunction()">Submit form</button>
-                        <button class="button" id="activate" name="activate" type="button" onlick="testFunction()">Activate</button>
+                        <button class="button" id="submit" name="submit" type="submit" onlick="button">Submit form</button>
+                        <button class="button" id="button" name="button" type="button" onlick="testFunction()">Activate</button>
                     </li>
                 </ul>
             </form>
@@ -48,8 +48,10 @@
         .then((response) => response.text())
         .then((response) => {
              console.log(response);
-             const content = document.querySelector('.h1');
-             content.innerHTML = console.log(response);
+             var content = document.querySelector('.h1');
+             content.textContent = console.log(response);
+             
+             document.body.style.backgroundColor = 'red';
         })
    }
 </script>
