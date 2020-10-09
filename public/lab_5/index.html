@@ -52,7 +52,8 @@
                 .then((response) => response.text())
                 .then((response) => {
                     console.log(response);
-                    let text = response;
+                    
+                    document.querySelector('h1').innerHTML = response;
 
                     document.body.style.backgroundColor = "#3a619e";
                     document.querySelector('.flex-outer').style.margin = "0px auto";
@@ -62,7 +63,6 @@
                     const fruitArray = ['apple', 'banana', 'grapes']
                     elements.forEach((el, i) => {
                         const text = el.innerText;
-                        console.log(text);
                         el.innerText = fruitArray[i];
                     })
 
