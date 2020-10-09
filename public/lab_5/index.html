@@ -48,6 +48,8 @@
         .then((response) => response.text())
         .then((response) => {
              console.log(response);
+             const content = document.querySelector('.h1');
+             content.innerHTML = console.log(response);
         })
    }
 </script>
