@@ -28,7 +28,7 @@ app.route('/api')
   .post((req, res) => {
     console.log('POST request detected');
     console.log('Form data in res.body', req.body);
-    res.send(countries);
+    res.json(countries);
   });
 
 app.listen(port, () => {
