@@ -8,6 +8,7 @@ function range(int) {
   return arr;
 }
 
+//sortFunction(a,b) <- descending sort
 function sortFunction(a, b, key) {
   if (a[key] < b[key]) {
     return -1;
@@ -29,8 +30,10 @@ document.body.addEventListener('submit', async (e) => {
   })
     .then((fromServer) => fromServer.json())
     .then((fromServer) => {
-      // You're going to do your lab work in here. Replace this comment.
       console.log('fromServer', fromServer);
+      var randomItem = fromServer[10];
+      console.log(randomItem);
+      console.log(fromServer[Math.floor(Math.random() * 200)]);
     })
     .catch((err) => console.log(err));
 });
