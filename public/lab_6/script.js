@@ -1,5 +1,5 @@
 // You may wish to find an effective randomizer function on MDN.
-function getRandomIntInclusive(min,max) {
+function getRandomInt(min,max) {
   const min1 = Math.ceil(min);
   const max1 = Math.floor(max);
   return Math.floor(Math.random() * (max1 - min1 + 1) + min1);
@@ -40,20 +40,20 @@ document.body.addEventListener('submit', async (e) => {
       }
       const newArr = range(10);
       const newArr2 = newArr.map(() => {
-        const number = getRandomIntInclusive(0,243);
+        const number = getRandomInt(0,243);
         return fromServer[number];
       });
 
       const reverseList = newArr2.sort((a,b) => sortFunction(b,a,'name'));
-      const ul = document.createElement('ol');
-      ul.className = 'flex-inner';
-      $('form').prepend(ul);
+      const list = document.createElement('ol');
+      list.className = 'flex-inner';
+      $('form').prepend(list);
 
       reverseList.forEach((el, i) => {
         const li = document.createElement('li');
-        $(li).append('<input type="checkbox" value= $(el.code) id=$(el.code) />');
-        $(li).append('<label for=$(el.code)>$(el.name)</label>');
-        $(ul).append(li);
+        $(li).append(`<input type="checkbox" value= ${el.code} id=${el.code} />`);
+        $(li).append(`<label for=${el.code}>${el.name}</label>`);
+        $(list).append(li);
       });
 
     })
