@@ -1,6 +1,28 @@
+function getRandomInt(min,max) {
+  const min1 = Math.ceil(min);
+  const max1 = Math.floor(max);
+  return Math.floor(Math.random() * (max1 - min1 + 1) + min1);
+}
 function convertRestaurantsToCategories(restaurantList) {
   // process your restaurants here!
-  return list;
+
+  const randomRest = restaurantList.map((item) => {
+    const which = getRandomInt(0,json.length);
+    const rest = json[which];
+    return rest;
+  });
+  const newDataShape = randomRest.reduce((collection,item,i) => {
+    const findCat = collection.find((findItem) => findItem.label == item.category);
+    if (!findCat) {
+      collection.push({
+        label: item.category,
+        y:1
+      });
+    } else {
+      findCat.y +=1;
+    }
+    return collection;
+  }, []);
 }
 
 function makeYourOptionsObject(datapointsFromRestaurantsList) {
@@ -11,9 +33,9 @@ function makeYourOptionsObject(datapointsFromRestaurantsList) {
 
   return {
     animationEnabled: true,
-    colorSet: 'customColorSet1',
+    colorSet: 'miscAdobe',
     title: {
-      text: 'Change This Title'
+      text: 'Places To Eat Out In Future'
     },
     axisX: {
       interval: 1,
@@ -22,9 +44,26 @@ function makeYourOptionsObject(datapointsFromRestaurantsList) {
     axisY2: {
       interlacedColor: 'rgba(1,77,101,.2)',
       gridColor: 'rgba(1,77,101,.1)',
-      title: 'Change This Title',
+      title: 'Restaurant By Category',
       labelFontSize: 12,
-      scaleBreaks: {customBreaks: []} // Add your scale breaks here https://canvasjs.com/docs/charts/chart-options/axisy/scale-breaks/custom-breaks/
+      scaleBreaks: {
+        customBreaks: [{
+          startValue:40,
+          endValue:50,
+          color:'orange'
+        },
+        {
+          startValue:85,
+          endValue:100,
+          color:'orange'
+        },
+        {
+          startValue:140,
+          endValue: 175,
+          color: 'orange'
+        }]
+      }
+        // Add your scale breaks here https://canvasjs.com/docs/charts/chart-options/axisy/scale-breaks/custom-breaks/
     },
     data: [{
       type: 'bar',
@@ -41,10 +80,20 @@ function runThisWithResultsFromServer(jsonFromServer) {
   // Process your restaurants list
   // Make a configuration object for your chart
   // Instantiate your chart
-  const reorganizedData = convertRestaurantsToCategories(jsonFromServer);
-  const options = makeYourOptionsObject(reorganizedData);
+  CanvasJS.addColorSet('miscAdobe', [
+  '#4F61F7',
+  '#5DDDFC',
+  '#60E69F',
+  '#94FC5D',
+  '#F2E75A'
+]);
+  const dataPoints = convertRestaurantsToCategories(jsonFromServer);
+  const options = makeYourOptionsObject(dataPoints);
   const chart = new CanvasJS.Chart('chartContainer', options);
   chart.render();
+  $(window).on('resize', () => {
+    chart.render();
+  })
 }
 
 // Leave lines 52-67 alone; do your work in the functions above
