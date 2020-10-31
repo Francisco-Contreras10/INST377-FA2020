@@ -3,8 +3,18 @@ function getRandomInt(min,max) {
   const max1 = Math.floor(max);
   return Math.floor(Math.random() * (max1 - min1 + 1) + min1);
 }
+async function loadData() {
+  const data = await fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json');
+  const json = await data.json();
+
 function convertRestaurantsToCategories(restaurantList) {
+ 
   // process your restaurants here!
+  const randomRest = restaurantList.map((item) => {
+    const which = getRandomInt(0, json.length);
+    const restaurant = json[which];
+    return restaurant;
+  });
   const newDataShape = restaurantList.reduce((collection,item,i) => {
     const findCat = collection.find((findItem) => findItem.label === item.category);
     if (!findCat) {
@@ -18,6 +28,8 @@ function convertRestaurantsToCategories(restaurantList) {
     return collection;
   }, []);
 }
+}
+window.onload = loadData;
 
 function makeYourOptionsObject(datapointsFromRestaurantsList) {
   // set your chart configuration here!
@@ -89,6 +101,7 @@ function runThisWithResultsFromServer(jsonFromServer) {
     chart.render();
   })
 }
+
 
 // Leave lines 52-67 alone; do your work in the functions above
 document.body.addEventListener('submit', async (e) => {
