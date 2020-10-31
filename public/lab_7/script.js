@@ -5,14 +5,8 @@ function getRandomInt(min,max) {
 }
 function convertRestaurantsToCategories(restaurantList) {
   // process your restaurants here!
-
-  const randomRest = restaurantList.map((item) => {
-    const which = getRandomInt(0,json.length);
-    const rest = json[which];
-    return rest;
-  });
-  const newDataShape = randomRest.reduce((collection,item,i) => {
-    const findCat = collection.find((findItem) => findItem.label == item.category);
+  const newDataShape = restaurantList.reduce((collection,item,i) => {
+    const findCat = collection.find((findItem) => findItem.label === item.category);
     if (!findCat) {
       collection.push({
         label: item.category,
