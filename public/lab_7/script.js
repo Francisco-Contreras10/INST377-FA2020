@@ -1,15 +1,7 @@
 function convertRestaurantsToCategories(restaurantList) {
   // process your restaurants here!
-  const categoryArray = [];
-
-  for (let i = 0; i < restaurantList.length; i += 1){
-    categoryArray.push(restaurantList[i].category);
-  }
-  const newA = categoryArray.map(restaurantList.category);
-  const newData = newA.reduce((collection, item, i) => {
-    const findCat = collection.find(
-      (findItem) => findItem.label === item.category
-    );
+  const newData = restaurantList.reduce((collection, item, i) => {
+    const findCat = collection.find((findItem) => findItem.label === item.category);
     if (!findCat) {
       collection.push({
         label: item.category,
