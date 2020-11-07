@@ -8,6 +8,5 @@ fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json')
         const regex = new RegExp(wordToMatch, 'gi');
         return place.name.match(regex) || place.city.match(regex)
     });
-
 }
 
