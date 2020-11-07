@@ -1,4 +1,3 @@
-
 const restaurant = [];
 fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json')
   .then(response => response.json())
@@ -11,3 +10,4 @@ fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json')
     });
 
 }
+
