@@ -42,7 +42,7 @@ function makeYourOptionsObject(datapointsFromRestaurantsList) {
         customBreaks: [{
           startValue:40,
           endValue:50,
-          color:'orange'
+          color: 'orange'
         },
         {
           startValue:85,
@@ -65,6 +65,7 @@ function makeYourOptionsObject(datapointsFromRestaurantsList) {
   };
 }
 function runThisWithResultsFromServer(jsonFromServer) {
+  // eslint-disable-next-line no-console
   console.log('jsonFromServer', jsonFromServer);
   sessionStorage.setItem('restaurantList', JSON.stringify(jsonFromServer)); // don't mess with this, we need it to provide unit testing support
   // Process your restaurants list
@@ -92,6 +93,7 @@ document.body.addEventListener('submit', async (e) => {
     .then((fromServer) => fromServer.json())
     .then((jsonFromServer) => runThisWithResultsFromServer(jsonFromServer))
     .catch((err) => {
+      // eslint-disable-next-line no-console
       console.log(err);
     });
 });
