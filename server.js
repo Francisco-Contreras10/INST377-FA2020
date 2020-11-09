@@ -3,8 +3,8 @@
 /* eslint-disable no-unused-vars */
 import express from 'express';
 import dotenv from 'dotenv';
-import countries from './public/lab_6/countries.js';
 import fetch from 'node-fetch';
+import countries from './public/lab_6/countries.js';
 
 dotenv.config();
 
