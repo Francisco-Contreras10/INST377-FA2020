@@ -13,7 +13,6 @@ function convertRestaurantsToCategories(restaurantList) {
     return collection;
   }, []);
 }
-
 function makeYourOptionsObject(datapointsFromRestaurantsList) {
   // set your chart configuration here!
   CanvasJS.addColorSet('greenShades', [
@@ -24,7 +23,6 @@ function makeYourOptionsObject(datapointsFromRestaurantsList) {
     '#3CB371',
     '#90EE90'
   ]);
-
   return {
     animationEnabled: true,
     colorSet: 'greenShades',
@@ -66,14 +64,12 @@ function makeYourOptionsObject(datapointsFromRestaurantsList) {
     }]
   };
 }
-
 function runThisWithResultsFromServer(jsonFromServer) {
   console.log('jsonFromServer', jsonFromServer);
   sessionStorage.setItem('restaurantList', JSON.stringify(jsonFromServer)); // don't mess with this, we need it to provide unit testing support
   // Process your restaurants list
   // Make a configuration object for your chart
   // Instantiate your chart
- 
   const dataPoints = convertRestaurantsToCategories(jsonFromServer);
   const options = makeYourOptionsObject(dataPoints);
   const chart = new CanvasJS.Chart('chartContainer', options);
@@ -82,7 +78,6 @@ function runThisWithResultsFromServer(jsonFromServer) {
     chart.render();
   });
 }
-
 // Leave lines 52-67 alone; do your work in the functions above
 document.body.addEventListener('submit', async (e) => {
   e.preventDefault(); // this stops whatever the browser wanted to do itself.
